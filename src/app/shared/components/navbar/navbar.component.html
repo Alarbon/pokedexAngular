@@ -1,0 +1,31 @@
+<!-- FILEPATH: /C:/Users/adrian/Desktop/Angular/pokedex/src/app/shared/components/navbar/navbar.component.html -->
+<nav class="bg-red-600 border-black border-b-4">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a routerLink="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <img src="https://cdn.discordapp.com/attachments/1173755894958395393/1174035469646962729/ALARBON_POKEDEX.png?ex=65b92f3c&is=65a6ba3c&hm=3f659f5bdb07dc893394eec4cf9e8e65bf05882676b27fa4d6f382aea0f1615f&"
+                class="h-11" alt="Pokedex" />
+        </a>
+        <button data-collapse-toggle="navbar-dropdown" type="button"
+            class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:text-yellow-300 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            aria-controls="navbar-dropdown" aria-expanded="false">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M1 1h15M1 7h15M1 13h1F5" />
+            </svg>
+        </button>
+        <div class="hidden w-full md:block md:w-auto" id="navbar-dropdown">
+            <ul
+                class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+                <li>
+                    <a href="/pokedex" class="block py-2 px-3 text-white hover:text-yellow-300">Home</a>
+                </li>
+                <li>
+                    <button (click)="pokemonAleatorio()" class="block py-2 px-3 text-white hover:text-yellow-300">Random
+                        Pokémon</button>
+                </li>
+               
+            </ul>
+        </div>
+    </div>
+</nav>

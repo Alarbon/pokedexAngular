@@ -1,0 +1,9 @@
+<a routerLink="/pokedex/pokemon/{{pokemon?.id}}">
+    <div [style.border-color]="pokemon!.types[0].type.name! | colorTipoPokemon  " class="border-2 | color rounded bg-gray-100 relative">
+        <span [style.color]="pokemon!.types[0].type.name | colorTipoPokemon " class="text-xs absolute top-3 right-3">#{{pokemon?.id}}</span>
+        <img class="h-20 mx-auto my-4" src="{{pokemon?.sprites?.other?.['official-artwork']?.front_default}}"
+            alt="{{pokemon?.name|titlecase}}">
+        <span [style.background-color]="pokemon!.types[0].type.name| colorTipoPokemon"
+            class="block text-white text-center p-2"><strong>{{pokemon?.name|titlecase}}</strong></span>
+    </div>
+</a>
