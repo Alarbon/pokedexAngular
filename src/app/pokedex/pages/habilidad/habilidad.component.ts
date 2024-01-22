@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { Pokemon } from '../../interfaces/pokemon';
 import { PokemonService } from '../../services/pokemon.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Habilidad } from '../../interfaces/habilidad';
+import { Pokemon } from '../../interfaces/pokemon';
 
 @Component({
-  selector: 'app-pokemon',
-  templateUrl: './pokemon.component.html',
-  styleUrl: './pokemon.component.css',
+  selector: 'app-habilidad',
+  templateUrl: './habilidad.component.html',
+  styleUrl: './habilidad.component.css',
 })
-export class PokemonComponent {
+export class HabilidadComponent {
+  habilidad?: Habilidad;
+  pokemons: Pokemon[] = [];
 
-  pokemon?: Pokemon;
-
-  //viene por id
   constructor(
     private pokemonService: PokemonService,
     private activatedRoute: ActivatedRoute,
@@ -28,27 +28,20 @@ export class PokemonComponent {
           return;
         }
 
-        if (id < 1 || id > 1010) {
-          this.router.navigate(['/error']);
-          return;
-        }
-
-        this.pokemonService.getPokemonById(id).subscribe((pokemon) => {
-          this.pokemon = pokemon;
+        this.pokemonService.getHabilidad(id).subscribe((habilidad) => {
+          this.habilidad = habilidad;
+     
+          habilidad.pokemon.forEach((pokemon) => {
+            this.pokemonService.getPokemon(pokemon.pokemon.url).subscribe((pokemon) => {
+              this.pokemons.push(pokemon);
+            });
+          });
+          
         });
       } catch (error) {
         this.router.navigate(['/error']);
         return;
       }
     });
-  }
-
-  getPokemon(id: number) {
-    this.router.navigate(['/pokedex/pokemon/', id]);
-  }
-
-  irHabilidad(ruta: string) {
-    const id = ruta.split('/')[6];
-    this.router.navigate(['/pokedex/habilidad/', id]);
   }
 }
